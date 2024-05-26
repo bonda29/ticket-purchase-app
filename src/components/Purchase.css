@@ -1,0 +1,17 @@
+    .Purchase {
+    text-align: center;
+    margin: 20px;
+  }
+  
+  .summary {
+    margin-top: 20px;
+  }
+  
+  .purchase-button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #6c7ae0;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
