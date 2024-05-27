@@ -20,6 +20,7 @@ export default function Purchase() {
     return (
       <div className="App">
         <h1>Схема на залата</h1>
+        <h4 id='stage'>Сцена</h4>
         <Hall hallLayout={initialLayout} onSeatSelect={handleSeatSelect} />
         <div className="summary">
           <h2>Избрани места:</h2>

@@ -10,7 +10,7 @@
   }
   
   .available {
-    background-color: #fff;
+    background-color: limegreen;
   }
   
   .selected {
@@ -18,7 +18,7 @@
   }
   
   .booked {
-    background-color: #ccc;
+    background-color: red;
     cursor: not-allowed;
   }
   
