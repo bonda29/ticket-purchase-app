@@ -10,8 +10,14 @@
   .purchase-button {
     margin-top: 10px;
     padding: 10px 20px;
-    background-color: #6c7ae0;
+    background-color: rgb(35, 82, 158);
     color: white;
     border: none;
     cursor: pointer;
+    border-radius: 1em;
+    transition: 0.5s;
+  }
+
+  .purchase-button:hover {
+    background-color: grey;
   }

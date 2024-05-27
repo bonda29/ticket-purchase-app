@@ -7,6 +7,11 @@
     line-height: 30px;
     border: 1px solid #ccc;
     cursor: pointer;
+    transition: 0.5s;
+  }
+
+  .available:hover {
+    background-color: grey;
   }
   
   .available {

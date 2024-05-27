@@ -1,4 +1,9 @@
 
 .homeSection {
     border-radius: 1em;
+    text-decoration: none;
+}
+
+.homeSection * {
+    text-decoration: none;
 }

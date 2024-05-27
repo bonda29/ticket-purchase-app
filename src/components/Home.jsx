@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import HomeContainer from './HomeContainer';
 import hallImage from '../assets/hall.jpg';
+import cindarellaHeel from '../assets/cindarellaHeel.jpg';
+import actingImage from '../assets/acting.jpg';
 import './Home.css';
 
 export default function Home() {
@@ -25,13 +27,13 @@ export default function Home() {
             />
             <HomeContainer
                 title={'За постановката'}
-                content={'Пепеляшка е една от най-обичаните постановки за малки и големи.'}
-                backgroundImageUrl={hallImage}
+                content={'"Пепеляшка" е една от най-обичаните постановки за малки и големи.'}
+                backgroundImageUrl={cindarellaHeel}
             />
             <HomeContainer
                 title={'Актьорите'}
                 content={'Най-обичаните ученици от НПМГ ще се включат в реализацията на събитието.'}
-                backgroundImageUrl={hallImage}
+                backgroundImageUrl={actingImage}
             />
 
         </main>

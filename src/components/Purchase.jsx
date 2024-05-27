@@ -12,10 +12,21 @@ const initialLayout = [
 
 export default function Purchase() {
     const [selectedSeats, setSelectedSeats] = useState([]);
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
 
     const handleSeatSelect = (seats) => {
       setSelectedSeats(seats);
     };
+
+    const handlePurchase = () => {
+      if (name.length === 0 || email.length === 0) {
+        alert('Моля попълнете имена и имейл.');
+        return;
+      }
+
+      alert('Purchased!');
+    }
   
     return (
       <div className="App">
@@ -24,12 +35,34 @@ export default function Purchase() {
         <Hall hallLayout={initialLayout} onSeatSelect={handleSeatSelect} />
         <div className="summary">
           <h2>Избрани места:</h2>
-          <ul>
+          <ul id='selected-seats'>
             {selectedSeats.map(seat => (
               <li key={seat.id}>{seat.number}</li>
             ))}
           </ul>
-          <button className="purchase-button" onClick={() => alert('Purchased!')}>
+          <form>
+          <div>
+            <label>
+              Имена:
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </label>
+          </div>
+          <div>
+            <label>
+              Имейл:
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </label>
+          </div>
+        </form>
+          <button className="purchase-button" onClick={() => handlePurchase()}>
             Купи
           </button>
         </div>
