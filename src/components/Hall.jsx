@@ -12,6 +12,7 @@ const Hall = ({ hallLayout, selectedSeats, onSeatSelect }) => {
 
   return (
     <div className="hall">
+      <h3 id='mainHall'>Основна зала</h3>
       {hallLayout.map((row, rowIndex) => (
         <div key={rowIndex} className="row">
           {row.map(seat => (
@@ -26,6 +27,7 @@ const Hall = ({ hallLayout, selectedSeats, onSeatSelect }) => {
           ))}
         </div>
       ))}
+      <h3 id='balcony'>Балкон</h3>
     </div>
   );
 };
