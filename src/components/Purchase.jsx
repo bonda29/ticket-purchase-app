@@ -38,7 +38,7 @@ const generateSeatLayout = (fetchedSeats) => {
                 row: fetchSeat.row,
                 seat: number,
                 is_booked: fetchSeat.is_booked || false,
-                price: 10,
+                price: fetchSeat.price,
             };
         });
     };
@@ -114,7 +114,7 @@ const Purchase = () => {
                 <h2>Избрани места:</h2>
                 <ul id="selected-seats">
                     {selectedSeats.map(seat => (
-                        <li key={seat.id}>Ред: {seat.row}, Място: {seat.number}</li>
+                        <li key={seat.id}>Ред: {seat.row}, Място: {seat.number}, Цена: {seat.price}</li>
                     ))}
                 </ul>
                 <form>
