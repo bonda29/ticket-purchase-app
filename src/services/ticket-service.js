@@ -1,12 +1,24 @@
+const BASE_URL = 'http://localhost:8080/api/v1/event-halls/1/hall-seats';
 
-const BASE_URL = '';
-
-export function fetchSeats() {
-
-    const seats = fetch(BASE_URL)
-                    .then(data => data.json())
-                    .then(seats => console.log(seats))
-                    .catch(error => console.log(error));
-    
-    return seats;
+export async function fetchSeats() {
+    try {
+        const response = await fetch(BASE_URL, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'same-origin' // or 'include' if needed
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const seats = await response.json();
+        return seats;
+    } catch (error) {
+        console.error('Failed to fetch seats:', error.message);
+        if (error instanceof TypeError) {
+            console.error('This is likely a network or CORS issue.');
+        }
+        throw error;
+    }
 }
