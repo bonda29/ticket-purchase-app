@@ -35,10 +35,10 @@ const generateSeatLayout = (fetchedSeats) => {
                 id: idCounter++,
                 number: number,
                 status: fetchSeat.is_booked ? 'booked' : 'available',
-                row: fetchSeat.row,
+                row: fetchSeat.row || rowIndex + 1,
                 seat: number,
                 is_booked: fetchSeat.is_booked || false,
-                price: fetchSeat.price,
+                price: fetchSeat.price || 10,
             };
         });
     };
@@ -78,23 +78,20 @@ const Purchase = () => {
 
     useEffect(() => {
         fetchSeats().then(seats => {
-            // console.log(seats);
-            // seats[3].is_booked = true;
-            // seats[10].is_booked = true;
-            // seats[4].is_booked = true;
-            // seats[13].is_booked = true;
-            // seats[14].is_booked = true;
-            // seats[15].is_booked = true;
-            // seats[16].is_booked = true;
-            // seats[17].is_booked = true;
             setFetchedSeats(seats);
             const layout = generateSeatLayout(seats);
             setHallLayout(layout);
         });
     }, []);
 
-    const handleSeatSelect = seats => {
-        setSelectedSeats(seats);
+    const handleSeatSelect = seat => {
+        setSelectedSeats(prevSelectedSeats => {
+            if (prevSelectedSeats.some(selectedSeat => selectedSeat.id === seat.id)) {
+                return prevSelectedSeats.filter(selectedSeat => selectedSeat.id !== seat.id);
+            } else {
+                return [...prevSelectedSeats, seat];
+            }
+        });
     };
 
     const handleSeatRemove = seatId => {
@@ -113,7 +110,7 @@ const Purchase = () => {
         <div className="App">
             <h1>Схема на залата</h1>
             <h4 id="stage">Сцена</h4>
-            <Hall hallLayout={hallLayout} onSeatSelect={handleSeatSelect} />
+            <Hall hallLayout={hallLayout} selectedSeats={selectedSeats} onSeatSelect={handleSeatSelect} />
             <div className="summary">
                 <h2>Избрани места:</h2>
                 <ul id="selected-seats">
@@ -152,3 +149,4 @@ const Purchase = () => {
 };
 
 export default Purchase;
+

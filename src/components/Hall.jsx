@@ -1,24 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Seat from './Seat.jsx';
-import './Hall.css'
+import './Hall.css';
 
-const Hall = ({ hallLayout, onSeatSelect }) => {
-  const [selectedSeats, setSelectedSeats] = useState([]);
+const Hall = ({ hallLayout, selectedSeats, onSeatSelect }) => {
 
   const handleSeatClick = (seat) => {
     if (seat.status === 'booked') return;
 
-    const updatedSeats = [...selectedSeats];
-    const seatIndex = updatedSeats.findIndex(s => s.id === seat.id);
-
-    if (seatIndex > -1) {
-      updatedSeats.splice(seatIndex, 1);
-    } else {
-      updatedSeats.push(seat);
-    }
-
-    setSelectedSeats(updatedSeats);
-    onSeatSelect(updatedSeats);
+    onSeatSelect(seat);
   };
 
   return (
@@ -28,8 +17,11 @@ const Hall = ({ hallLayout, onSeatSelect }) => {
           {row.map(seat => (
             <Seat
               key={seat.id}
-              seat={{ ...seat, status: selectedSeats.includes(seat) ? 'selected' : seat.status }}
-              onSeatClick={handleSeatClick}
+              seat={{
+                ...seat,
+                status: selectedSeats.some(selectedSeat => selectedSeat.id === seat.id) ? 'selected' : seat.status
+              }}
+              onSeatClick={() => handleSeatClick(seat)}
             />
           ))}
         </div>
@@ -39,3 +31,4 @@ const Hall = ({ hallLayout, onSeatSelect }) => {
 };
 
 export default Hall;
+
