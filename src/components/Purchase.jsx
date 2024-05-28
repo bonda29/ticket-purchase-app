@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Hall from './Hall.jsx';
 import './Purchase.css';
-import { fetchSeats } from '../services/ticket-service.js';
+import { fetchSeats } from '../services/hallService.js';
+import { purchaseTickets } from '../services/ticketService.js';
+import { redirect } from 'react-router-dom';
 
 const generateSeatLayout = (fetchedSeats) => {
     const layout = [];
@@ -74,6 +76,7 @@ const Purchase = () => {
     const [fetchedSeats, setFetchedSeats] = useState([]);
     const [hallLayout, setHallLayout] = useState([]);
     const [name, setName] = useState('');
+    const [surname, setSurname] = useState('');
     const [email, setEmail] = useState('');
 
     useEffect(() => {
@@ -98,12 +101,26 @@ const Purchase = () => {
         setSelectedSeats(selectedSeats.filter(seat => seat.id !== seatId));
     };
 
-    const handlePurchase = () => {
+    const handlePurchase = async () => {
         if (name.length === 0 || email.length === 0) {
             alert('Моля попълнете имена и имейл.');
             return;
         }
-        alert('Purchased!');
+
+        const order = {
+            first_name: name,
+            last_name: surname,
+            email: email,
+            hall_seat_ids: selectedSeats.map(s => s.id)
+        }
+
+        // console.log(order);
+
+        purchaseTickets(order).then(urlObj => {
+            window.location.href = urlObj.url;
+        });
+
+        // alert('Purchased!');
     };
 
     return (
@@ -121,11 +138,21 @@ const Purchase = () => {
                 <form>
                     <div>
                         <label>
-                            Имена:
+                            Име:
                             <input
                                 type="text"
                                 value={name}
                                 onChange={e => setName(e.target.value)}
+                            />
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            Фамилия:
+                            <input
+                                type="text"
+                                value={surname}
+                                onChange={e => setSurname(e.target.value)}
                             />
                         </label>
                     </div>
