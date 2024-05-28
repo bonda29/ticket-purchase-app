@@ -97,6 +97,10 @@ const Purchase = () => {
         setSelectedSeats(seats);
     };
 
+    const handleSeatRemove = seatId => {
+        setSelectedSeats(selectedSeats.filter(seat => seat.id !== seatId));
+    };
+
     const handlePurchase = () => {
         if (name.length === 0 || email.length === 0) {
             alert('Моля попълнете имена и имейл.');
@@ -114,7 +118,7 @@ const Purchase = () => {
                 <h2>Избрани места:</h2>
                 <ul id="selected-seats">
                     {selectedSeats.map(seat => (
-                        <li key={seat.id}>Ред: {seat.row}, Място: {seat.number}, Цена: {seat.price}</li>
+                        <li key={seat.id}>Ред: {seat.row}, Място: {seat.number}, Цена: {seat.price} <button className='seatRemoveBtn' onClick={() => handleSeatRemove(seat.id)}>премахни</button></li>
                     ))}
                 </ul>
                 <form>

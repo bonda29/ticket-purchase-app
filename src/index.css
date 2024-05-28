@@ -128,3 +128,16 @@ input {
   border-radius: 4px;
   width: 100%;
 }
+
+.seatRemoveBtn {
+  width: 30%;
+  margin: 0.5em auto;
+  border-radius: 5em;
+  background-color: red;
+  color: white;
+  transition: 0.5s;
+}
+
+.seatRemoveBtn:hover {
+  background-color: grey;
+}
