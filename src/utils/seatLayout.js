@@ -34,6 +34,7 @@ export const generateSeatLayout = (fetchedSeats) => {
                 seat: number,
                 is_booked: fetchSeat.is_booked || false,
                 price: fetchSeat.price || 10,
+                type: fetchSeat.type
             };
         });
     };

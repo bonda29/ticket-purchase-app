@@ -66,7 +66,7 @@ const Purchase = () => {
                 <h2>Избрани места:</h2>
                 <ul id="selected-seats">
                     {selectedSeats.map(seat => (
-                        <li key={seat.id}>Ред: {seat.row}, Място: {seat.number}, Цена: {seat.price} <button className='seatRemoveBtn' onClick={() => handleSeatRemove(seat.id)}>премахни</button></li>
+                        <li key={seat.id}>Ред: {seat.row}, Място: {seat.number}, Цена: {seat.price} лв., Тип: {seat.type.includes('BALCONY') ? 'Балкон' : 'Нормален'}<button className='seatRemoveBtn' onClick={() => handleSeatRemove(seat.id)}>премахни</button></li>
                     ))}
                 </ul>
                 <form>

@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:8080/api/v1/event-halls/1/hall-seats';
+const BASE_URL = 'https://pepeliyashka.net/api/v1/event-halls/1/hall-seats';
 
 export async function fetchSeats() {
     try {

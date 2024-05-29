@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:8080/api/v1/tickets/purchase';
+const BASE_URL = 'https://pepeliyashka.net/api/v1/tickets/purchase';
 
 export async function purchaseTickets(order) {
     try {
