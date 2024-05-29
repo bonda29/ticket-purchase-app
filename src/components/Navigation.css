@@ -18,10 +18,14 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: black;
+    color: white;
     transition: color 0.5s;
 }
 
 nav ul li:hover a {
     color: gray;
+}
+
+main {
+    background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fgrabo.bg%2Fsofia%2Fna-teatar-0qwww8&psig=AOvVaw166b1lkWgzLlaWfj3oKTv-&ust=1717065015541000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCOCf7-bTsoYDFQAAAAAdAAAAABAE');
 }
