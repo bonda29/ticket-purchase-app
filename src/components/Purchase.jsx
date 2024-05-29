@@ -35,9 +35,27 @@ const Purchase = () => {
         setSelectedSeats(selectedSeats.filter(seat => seat.id !== seatId));
     };
 
+    function validateEmail(email) {
+        // Regular expression for validating an email
+        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        
+        // Test the email against the regex
+        return emailRegex.test(email);
+      }
+
     const handlePurchase = async () => {
         if (name.length === 0 || email.length === 0) {
-            alert('Моля попълнете имена и имейл.');
+            alert('Моля, попълнете имена и имейл.');
+            return;
+        }
+
+        if (!validateEmail(email)) {
+            alert('Невалиден имейл.');
+            return;
+        } 
+
+        if (selectedSeats.length === 0) {
+            alert('Моля, изберете билети');
             return;
         }
 
