@@ -43,44 +43,42 @@ const Purchase = () => {
         return emailRegex.test(email);
       }
 
-    const handlePurchase = async () => {
+      const handlePurchase = async () => {
         if (name.length === 0 || email.length === 0) {
             alert('Моля, попълнете имена и имейл.');
             return;
         }
-
+    
         if (!validateEmail(email)) {
             alert('Невалиден имейл.');
             return;
-        } 
-
+        }
+    
         if (selectedSeats.length === 0) {
             alert('Моля, изберете билети');
             return;
         }
-
+    
         const order = {
             first_name: name,
             last_name: surname,
             email: email,
             hall_seat_ids: selectedSeats.map(s => s.id)
-        }
-
-        // console.log(order);
-
+        };
+    
         try {
-
-            purchaseTickets(order).then(urlObj => {
-
+            const urlObj = await purchaseTickets(order);
+    
+            if (urlObj && urlObj.url) {
                 window.location.href = urlObj.url;
-            });
-
-        } catch (error) {
+            } else {
                 alert('Избраните от вас балони вече са закупени.');
+            }
+        } catch (error) {
+            alert('Избраните от вас балони вече са закупени.');
         }
-
-        // alert('Purchased!');
     };
+    
 
     return (
         <div className="App">
