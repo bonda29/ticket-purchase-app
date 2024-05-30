@@ -75,9 +75,8 @@ const Purchase = () => {
                 window.location.href = urlObj.url;
             });
 
-        } catch (eror) {
+        } catch (error) {
                 alert('Избраните от вас балони вече са закупени.');
-                return;
         }
 
         // alert('Purchased!');
