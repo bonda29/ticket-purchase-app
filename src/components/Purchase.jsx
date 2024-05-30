@@ -72,10 +72,10 @@ const Purchase = () => {
             if (urlObj && urlObj.url) {
                 window.location.href = urlObj.url;
             } else {
-                alert('Избраните от вас балони вече са закупени.');
+                alert('Избраните от Вас билети вече са закупени.');
             }
         } catch (error) {
-            alert('Избраните от вас балони вече са закупени.');
+            alert('Избраните от Вас билети вече са закупени.');
         }
     };
     
