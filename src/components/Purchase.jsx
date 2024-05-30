@@ -68,15 +68,17 @@ const Purchase = () => {
 
         // console.log(order);
 
-        purchaseTickets(order).then(urlObj => {
+        try {
 
-            if (urlObj.url === undefined) {
+            purchaseTickets(order).then(urlObj => {
+
+                window.location.href = urlObj.url;
+            });
+
+        } catch (eror) {
                 alert('Избраните от вас балони вече са закупени.');
                 return;
-            }
-
-            window.location.href = urlObj.url;
-        });
+        }
 
         // alert('Purchased!');
     };
