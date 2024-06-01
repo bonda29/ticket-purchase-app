@@ -9,6 +9,18 @@ import './Home.css';
 export default function Home() {
 
     return (
+        <div style={{ height: '100vh' }}>
+            <iframe
+                src="https://test2.bonda.tech/"
+                style={{ width: '100%', height: '100%', border: 'none' }}
+                title="About Page"
+            ></iframe>
+        </div>
+    );
+}
+/*export default function Home() {
+
+    return (
         <main>
             <section id='ticket-purchase-container'>
                 <h3>
@@ -38,4 +50,4 @@ export default function Home() {
 
         </main>
     );
-}
+}*/
