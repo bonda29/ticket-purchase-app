@@ -57,7 +57,7 @@ export const generateSeatLayout = (fetchedSeats) => {
     layout.push(createRow(18, 17));
 
     // Last 5 rows with alternating 20 and 19 seats
-    const lastRowSeatCounts = [20, 19, 20, 19, 20];
+    const lastRowSeatCounts = [19, 20, 19, 20, 20];
     for (let i = 0; i < 5; i++) {
         layout.push(createRow(i + 19, lastRowSeatCounts[i]));
     }
