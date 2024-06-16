@@ -8,7 +8,7 @@ export default function Navigation() {
             <ul>
                 <li><Link to={'/'}><h3>Начало</h3></Link></li>
                 <li><Link to={'/about'}><h3>За нас</h3></Link></li>
-                <li><Link to={'/purchase'}><h3>Купи билет</h3></Link></li>
+                {/*<li><Link to={'/purchase'}><h3>Купи билет</h3></Link></li>*/}
             </ul>
         </nav>
     );
